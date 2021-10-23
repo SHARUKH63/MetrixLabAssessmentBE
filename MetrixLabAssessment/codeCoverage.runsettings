@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollector>
+      <Configuration>
+        <CodeCoverage>
+          <ModulePaths>
+            <Include>
+              <!-- Include all loaded .dll assemblies (but not .exe assemblies): -->
+              <ModulePath>.*\.dll$</ModulePath>
+            </Include>
+            <Exclude>
+              <!-- But exclude some assemblies: -->
+              <ModulePath>.MetrixLabAssessment.Tests.dll</ModulePath>
+              <!-- Exclude all file paths that contain "Temp": -->
+              <ModulePath>.*Temp.*</ModulePath>
+            </Exclude>
+          </ModulePaths>
+        </CodeCoverage>
+      </Configuration>
+    </DataCollector>
+  </DataCollectionRunSettings>
+</RunSettings>

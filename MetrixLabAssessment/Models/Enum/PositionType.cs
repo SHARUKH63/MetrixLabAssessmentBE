@@ -1,4 +1,6 @@
-﻿namespace MetrixLabAssessment.Models.Enum
+﻿using System.ComponentModel;
+
+namespace MetrixLabAssessment.Models.Enum
 {
     /// <summary>
     /// Enum for position types.
@@ -8,11 +10,11 @@
         /// <summary>
         /// Software engineering position.
         /// </summary>
-        SoftwareEngineering = 0,
+        SoftwareEngineering,
 
         /// <summary>
         /// Research management position.
         /// </summary>
-        ResearchManagement = 1
+        ResearchManagement
     }
 }

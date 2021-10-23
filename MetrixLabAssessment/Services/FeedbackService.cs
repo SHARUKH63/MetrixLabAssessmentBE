@@ -16,7 +16,7 @@ namespace MetrixLabAssessment.Services
         /// <summary>
         /// Acts as inmemory, where all feedbacks is being saved.
         /// </summary>
-        public static List<Feedback> FeedbackList;
+        public static List<Feedback> s_feedbackList;
 
         /// <summary>
         /// Saves the feedback given by candidate to memory.
@@ -30,17 +30,17 @@ namespace MetrixLabAssessment.Services
                 throw new ArgumentException("Request cannot be null.");
             }
 
-            if (FeedbackList == null)
+            if (s_feedbackList == null)
             {
-                FeedbackList = new List<Feedback>();
+                s_feedbackList = new List<Feedback>();
             }
 
-            FeedbackList.Add(new Feedback
+            s_feedbackList.Add(new Feedback
             {
                 IsInterviewTimeAndMannerClear = request.IsInterviewTimeAndMannerClear,
                 IsInterviewOnTime = request.IsInterviewOnTime,
                 FeedbackText = request.FeedbackText,
-                PositionType = request.PositionType,
+                PositionType = request.PositionType.ToString(),
                 Topics = request.Topics
             });
 
@@ -53,35 +53,24 @@ namespace MetrixLabAssessment.Services
         /// <returns><see cref="List{Feedback}"/>.</returns>
         public DownloadFeedbackResponse DownloadFeedbacks()
         {
-            try
-            {
-                var feedbacks = new List<Feedback>();
+            var feedbacks = new List<Feedback>();
 
-                FeedbackList?.ForEach(feedback =>
-                {
-                    if (!feedback.IsDownloaded)
-                    {
-                        feedback.IsDownloaded = true;
-                        feedbacks.Add(feedback);
-                    }
-                });
-
-                return new DownloadFeedbackResponse
-                {
-                    Feedbacks = feedbacks,
-                    FeedbackCount = feedbacks?.Count() ?? 0,
-                    IsSuccessful = true,
-                    Message = "Feedbacks downloaded successfully"
-                };
-            }
-            catch (Exception)
+            s_feedbackList?.ForEach(feedback =>
             {
-                return new DownloadFeedbackResponse
+                if (!feedback.IsDownloaded)
                 {
-                    IsSuccessful = false,
-                    Message = "Error occured while downloading feedbacks."
-                };
-            } 
+                    feedback.IsDownloaded = true;
+                    feedbacks.Add(feedback);
+                }
+            });
+
+            return new DownloadFeedbackResponse
+            {
+                Feedbacks = feedbacks,
+                FeedbackCount = feedbacks?.Count() ?? 0,
+                IsSuccessful = true,
+                Message = "Feedbacks downloaded successfully"
+            };
         }
 
         /// <summary>
@@ -90,7 +79,7 @@ namespace MetrixLabAssessment.Services
         /// <returns>Number indicating undownloaded feedbacks.</returns>
         public int PendingFeedbackDownloads()
         {
-            return FeedbackList?.Where(feedback => !feedback.IsDownloaded).Count() ?? 0;
+            return s_feedbackList?.Where(feedback => !feedback.IsDownloaded).Count() ?? 0;
         }
     }
 }

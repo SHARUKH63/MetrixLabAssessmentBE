@@ -125,6 +125,10 @@
     <Compile Include="Controllers\FeedbackControllerTests\PendingFeedbackDownloadsTests.cs" />
     <Compile Include="Controllers\FeedbackControllerTests\SaveFeedbackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FeedbackServiceTests\DownloadFeedbacksTests.cs" />
+    <Compile Include="Services\FeedbackServiceTests\FeedServiceTestBase.cs" />
+    <Compile Include="Services\FeedbackServiceTests\PendingFeedbackDownloadsTests.cs" />
+    <Compile Include="Services\FeedbackServiceTests\SaveFeedbackServiceTests.cs" />
     <Compile Include="TestServices\TestFeedbackService.cs" />
     <Compile Include="UnitTestBase\ControllerUnitTestBase.cs" />
     <Compile Include="UnitTestBase\UnitTestBase.cs" />
@@ -141,9 +145,7 @@
       <Name>MetrixLabAssessment</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\FeedbackServiceTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

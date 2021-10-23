@@ -19,6 +19,13 @@ namespace MetrixLabAssessment.Tests
             container.RegisterType<IFeedbackService, TestFeedbackService>();
             container.Resolve<IFeedbackService>();
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+
+            Seed();
+        }
+
+        protected virtual void Seed()
+        {
+
         }
     }
 }

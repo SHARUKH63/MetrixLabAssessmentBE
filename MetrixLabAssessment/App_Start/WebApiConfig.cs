@@ -13,7 +13,7 @@ namespace MetrixLabAssessment
         /// <param name="config"><see cref="HttpConfiguration"/>.</param>
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

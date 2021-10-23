@@ -1,7 +1,5 @@
 ﻿using MetrixLabAssessment.Models.Enum;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace MetrixLabAssessment.Models.Request
 {
@@ -28,7 +26,7 @@ namespace MetrixLabAssessment.Models.Request
         /// <summary>
         /// Gets or sets position type of candidate.
         /// </summary>
-        public string PositionType { get; set; }
+        public PositionType PositionType { get; set; }
 
         /// <summary>
         /// Gets or sets list of topics which has been asked in interview.

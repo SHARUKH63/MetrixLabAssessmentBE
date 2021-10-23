@@ -6,6 +6,7 @@ using System;
 using System.Web.Http;
 using System.Net;
 using System.Collections.Generic;
+using MetrixLabAssessment.Filters;
 
 namespace MetrixLabAssessment.Controllers
 {
@@ -13,6 +14,7 @@ namespace MetrixLabAssessment.Controllers
     /// Controller to expose feedback related endpoints.
     /// </summary>
     [RoutePrefix("feedback")]
+    [CustomExceptionFilter]
     public class FeedbackController : ApiController
     {
         private readonly IFeedbackService _feedbackService;
@@ -45,10 +47,6 @@ namespace MetrixLabAssessment.Controllers
             catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
             }
         }
 
