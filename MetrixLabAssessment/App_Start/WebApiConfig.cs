@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MetrixLabAssessment
 {
@@ -13,7 +14,8 @@ namespace MetrixLabAssessment
         /// <param name="config"><see cref="HttpConfiguration"/>.</param>
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

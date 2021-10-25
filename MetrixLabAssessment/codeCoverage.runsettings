@@ -11,7 +11,7 @@
             </Include>
             <Exclude>
               <!-- But exclude some assemblies: -->
-              <ModulePath>.MetrixLabAssessment.Tests.dll</ModulePath>
+              <ModulePath>.*MetrixLabAssessmentBE\MetrixLabAssessment.Tests.dll</ModulePath>
               <!-- Exclude all file paths that contain "Temp": -->
               <ModulePath>.*Temp.*</ModulePath>
             </Exclude>
