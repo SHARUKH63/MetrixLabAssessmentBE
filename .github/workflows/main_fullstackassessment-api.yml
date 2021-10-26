@@ -28,6 +28,12 @@ jobs:
       - name: Publish to folder
         run: msbuild ./MetrixLabAssessment/MetrixLabAssessment.csproj /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
+      - name: Setup VSTest.exe
+        uses: Malcolmnixon/Setup-VSTest@v4
+        
+      - name: VSTest
+        run: vstest.console ./MetrixLabAssessment.Tests/MetrixLabAssessment.Tests.csproj
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
