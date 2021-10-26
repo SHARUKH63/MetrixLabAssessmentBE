@@ -32,7 +32,7 @@ jobs:
         uses: Malcolmnixon/Setup-VSTest@v4
         
       - name: VSTest
-        run: vstest.console ./MetrixLabAssessment.Tests/MetrixLabAssessment.Tests.csproj
+        run: vstest.console ./MetrixLabAssessment.Tests/bin/Debug/MetrixLabAssessment.Tests.dll
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
