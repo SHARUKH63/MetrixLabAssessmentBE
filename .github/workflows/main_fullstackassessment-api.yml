@@ -27,7 +27,7 @@ jobs:
 
       - name: Publish to folder
         run: msbuild ./MetrixLabAssessment/MetrixLabAssessment.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
-
+        
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v4
         
